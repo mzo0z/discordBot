@@ -1,0 +1,91 @@
+import discord
+import random
+import assist
+import datetime
+from . import gamesAssist
+
+async def start(ctx, client):
+    gameName = '**اعلام - flags**'
+    reverseLeader = ctx.author.id
+
+    flags = [i for i in gamesAssist.flags.keys()]
+    flag = random.choice(flags)
+
+    answer = flag.replace('أ', 'ا')
+    answer = answer.replace("ؤ", 'و')
+    answer = answer.replace('ة', 'ه')
+    answer = answer.replace('ئ', 'ى')
+    answer = answer.replace('إ', 'ا')
+    answer = answer.replace('آ', 'ا')
+    answer = answer.replace('ّ', '')
+    answer = answer.replace('َ', '')
+    answer = answer.replace('ً', '')
+    answer = answer.replace('ُ', '')
+    answer = answer.replace('ٌ', '')
+    answer = answer.replace('ٍ', '')
+    answer = answer.replace('ِ', '')
+    answer = answer.replace('ْ', '')
+    answer = answer.replace('َ', '')
+    answer = answer.replace('َ', '')
+    answer = answer.replace('َ', '')
+    answer = answer.replace('َ', '')
+    answer = answer.replace('ّ', '')
+    answer = answer.replace('ً', '')
+    answer = answer.replace('ُ', '')
+    answer = answer.replace('ِ', '')
+    answer = answer.replace('ٍ', '')
+    answer = answer.replace('ْ', '')
+    answer = answer.replace('ٌ', '')
+    answer = answer.replace('ـ', '')
+    answer = answer.replace('ٰ', '')
+    answer = answer.replace('ٰ', '')
+    answer = answer.replace('ٓ', '')
+    answer = answer.replace('ال', '')
+
+    flagsEmbed = discord.Embed(title=gameName, description=f'**هذا علم اي دولة؟**', color=assist.embedColors.blue, timestamp = datetime.datetime.now())
+    flagsEmbed.set_author(icon_url=client.user.avatar.url, name = 'mzooz games bot', url=assist.mzo0zServer)
+    flagsEmbed.set_image(url=gamesAssist.flags[flag])
+    try:flagsEmbed.set_footer(text=ctx.author, icon_url=ctx.author.avatar.url)
+    except:flagsEmbed.set_footer(text=ctx.author, icon_url=ctx.author.default_avatar.url)
+    ff = await ctx.channel.send(embed=flagsEmbed)
+    def waitForFlagsAnser(m):return m.author == ctx.author and m.channel == ctx.channel
+    waitforrqansernow = await client.wait_for('message', check=waitForFlagsAnser)
+    waitforrqansernow = waitforrqansernow.content
+
+    waitforrqanser = waitforrqansernow.replace('أ', 'ا')
+    waitforrqanser = waitforrqanser.replace("ؤ", 'و')
+    waitforrqanser = waitforrqanser.replace('ة', 'ه')
+    waitforrqanser = waitforrqanser.replace('ئ', 'ى')
+    waitforrqanser = waitforrqanser.replace('إ', 'ا')
+    waitforrqanser = waitforrqanser.replace('آ', 'ا')
+    waitforrqanser = waitforrqanser.replace('ّ', '')
+    waitforrqanser = waitforrqanser.replace('َ', '')
+    waitforrqanser = waitforrqanser.replace('ً', '')
+    waitforrqanser = waitforrqanser.replace('ُ', '')
+    waitforrqanser = waitforrqanser.replace('ٌ', '')
+    waitforrqanser = waitforrqanser.replace('ٍ', '')
+    waitforrqanser = waitforrqanser.replace('ِ', '')
+    waitforrqanser = waitforrqanser.replace('ْ', '')
+    waitforrqanser = waitforrqanser.replace('َ', '')
+    waitforrqanser = waitforrqanser.replace('َ', '')
+    waitforrqanser = waitforrqanser.replace('َ', '')
+    waitforrqanser = waitforrqanser.replace('َ', '')
+    waitforrqanser = waitforrqanser.replace('ّ', '')
+    waitforrqanser = waitforrqanser.replace('ً', '')
+    waitforrqanser = waitforrqanser.replace('ُ', '')
+    waitforrqanser = waitforrqanser.replace('ِ', '')
+    waitforrqanser = waitforrqanser.replace('ٍ', '')
+    waitforrqanser = waitforrqanser.replace('ْ', '')
+    waitforrqanser = waitforrqanser.replace('ٌ', '')
+    waitforrqanser = waitforrqanser.replace('ـ', '')
+    waitforrqanser = waitforrqanser.replace('ٰ', '')
+    waitforrqanser = waitforrqanser.replace('ٰ', '')
+    waitforrqanser = waitforrqanser.replace('ٓ', '')
+    waitforrqanser = waitforrqanser.replace('ال', '')
+
+    if waitforrqanser == answer:reverseResultAnserEmbed = discord.Embed(title='**:white_check_mark: اجابة صحيحة!**', color=assist.embedColors.ligh_green, timestamp = datetime.datetime.now())
+    else:reverseResultAnserEmbed = discord.Embed(title='**:x: اجابة خاطئة!**', description=f'الاجابة الصحيحة هي: **{flag}**', color=assist.embedColors.red, timestamp = datetime.datetime.now())
+    try:reverseResultAnserEmbed.set_footer(text=ctx.author, icon_url=ctx.author.avatar.url)
+    except:reverseResultAnserEmbed.set_footer(text=ctx.author, icon_url=ctx.author.default_avatar.url)
+    reverseResultAnserEmbed.set_author(icon_url=client.user.avatar.url, name='mzooz games bot', url=assist.mzo0zServer)
+    await ff.edit(embed=reverseResultAnserEmbed)
