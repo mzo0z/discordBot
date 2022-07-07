@@ -320,7 +320,7 @@ header{
 
 
 
-mzo0zServer = 'https://discord.gg/7gzWBSCbY6'
+mzo0zServer = 'https://discord.gg/3psKD4pH4G'
 
 def setupCommand(prefix):
     return f"""
